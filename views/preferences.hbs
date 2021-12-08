@@ -1,0 +1,18 @@
+<form name="preferences" method="post">
+  <select name="title">
+    <option name="title">test title value</option>
+    {{#each titles}}
+    <option> {{this.title}} </option>
+    {{/each}}
+  </select>
+  <select>
+    <option name="aim">test aim value</option>
+    {{#each aim}}
+    <option> {{this.aim}}</option>
+    {{/each}}
+  </select>
+  <input type="checkbox" name="smoking">
+  <input type="checkbox" name="drink">
+  <input type="text" name="social">
+  <input type="submit">
+</form>
