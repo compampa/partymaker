@@ -55,4 +55,9 @@ router.get('/main', async (req, res) => {
 // карточка рандомного юзера
 // Добавить информацию из других таблиц о юзере
 
+router.get('/profile', async (req, res) => {
+  // id юзера через req.session
+  console.log(req.session);
+  res.render('profile');
+});
 module.exports = router;
