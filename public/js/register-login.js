@@ -32,3 +32,10 @@ if (document.forms) {
   });
 }
 
+if (document.forms[0]) {
+  const aboutForm = document.forms[0];
+  console.log(aboutForm);
+  aboutForm.addEventListener('click', (e) => {
+
+  });
+}
