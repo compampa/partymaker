@@ -44,6 +44,14 @@ router.post('/registration/about', (req, res) => {
 
 });
 
+
+
+router.get('/main', async (req, res) => {
+  const response = await Users.findAll({ raw: true });
+  console.log(response);
+  res.render('main', { response });
+});
+
 // карточка рандомного юзера
 // Добавить информацию из других таблиц о юзере
 
