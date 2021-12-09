@@ -14,7 +14,7 @@ router.get('/registration', (req, res) => {
 router.post('/registration', async (req, res) => {
   const { login, email, password } = req.body;
   try {
-   await Users.create({ login, email, password });
+    await Users.create({ login, email, password });
     // await Tables.create({ user_id: user.id });
     console.log(login, email, password);
     res.render('preferences');
@@ -27,6 +27,15 @@ router.get('/preferences', (req, res) => {
   } = req.body;
   console.log(title, aim, smoking, drink, social);
   res.render('index');
+});
+
+router.get('/main', async (req, res) => {
+  const response = await Users.findAll({ raw: true });
+  for (let i = 0; i < array.length; i++) {
+		const element = array[i];
+		
+	}
+  res.render('main', { response });
 });
 
 module.exports = router;
