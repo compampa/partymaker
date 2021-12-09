@@ -44,4 +44,21 @@ router.post('/registration/about', (req, res) => {
 
 });
 
+// карточка рандомного юзера
+// Добавить информацию из других таблиц о юзере
+router.get('/user/:id', async (req, res) => {
+  const { id } = req.params;
+  try {
+    const user = await Users.findOne({ where: { id } });
+    console.log(user);
+    res.render('userPage', { user });
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+router.get('/profile', async (req, res) => {
+  // id юзера через req.session
+  res.render('profile');
+});
 module.exports = router;
