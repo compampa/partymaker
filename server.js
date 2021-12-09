@@ -6,7 +6,7 @@ const session = require('express-session');
 const userRouter = require('./routes/user');
 
 const app = express();
-const PORT = 3000;
+const PORT = 3001;
 
 app.set('view engine', 'hbs');
 app.use(express.urlencoded({ extended: true }));
