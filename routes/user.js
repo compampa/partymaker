@@ -99,13 +99,46 @@ router.post('/registration/about', (req, res) => {
 
 
 router.get('/main', async (req, res) => {
+
+  const maxcount = 20;
+  const random = Math.floor(Math.random(0, maxcount - 15));
+  const arr = '123456789012345'.split('').map((el, i) => random + i);
+  // const response = await Users.findAll({ where: { id: arr } });
+  // function getRandomInt(max) {
+  // 	return Math.floor(Math.random() * max);
+  // }
+  // console.log(response);
+  const response = [
+  	{ email: 'yra1' },
+  	{ email: 'kirill2',age: 12  },
+		{ age: 12 },
+  	{ email: 'yra3' },
+  	{ email: 'kirill4' },
+		{ age: 22 },
+  ];
+  response.sort((a, b) => Math.random() - 0.5);
+
   const response = await Users.findAll({ raw: true });
+
   console.log(response);
   res.render('main', { response });
 });
 
+
+router.get('/user/:id', async (req, res) => {
+  const { id } = req.params;
+  try {
+    const user = await Users.findOne({ where: { id } });
+    console.log(user);
+    res.render('userPage', { user });
+  } catch (err) {
+    console.log(err);
+  }
+});
+
 // карточка рандомного юзера
 // Добавить информацию из других таблиц о юзере
+
 
 router.get('/profile', async (req, res) => {
   // id юзера через req.session
