@@ -21,6 +21,13 @@ module.exports = {
           key: 'id',
         },
       },
+      theme_id: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Themes', // имя таблицы а не модели
+          key: 'id',
+        },
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
