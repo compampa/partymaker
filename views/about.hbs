@@ -1,0 +1,38 @@
+<h1>Дополните информацию о себе: </h1>
+<br>
+<form action="/registration/about" method="POST">
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Ваше имя:</label>
+    <input type="text" class="form-control" id="name" aria-describedby="emailHelp" name="name">
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Ваш возраст:</label>
+    <input type="password" class="form-control" id="age" name="age">
+  </div>
+  <p>Какие у вас интересы?</p>
+  <select class="form-select form-select-sm mb-5" aria-label=".form-select-sm example">
+    {{#each titleInterests}}
+    <option selected id="interest">{{this.title}}</option>
+    {{/each}}
+  </select>
+  <p>На какие темы любите поговорить?</p>
+  <select class="form-select form-select-sm mb-5" aria-label=".form-select-sm example">
+    {{#each titleThemes}}
+    <option selected id="theme">{{this.title}}</option>
+    {{/each}}
+  </select>
+  <div class="form-check mt-5">
+    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+    <label class="form-check-label" for="flexCheckDefault">
+      Курю
+    </label>
+  </div>
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+    <label class="form-check-label" for="flexCheckChecked">
+      Пью
+    </label>
+  </div>
+  <br>
+  <button type="submit" class="btn btn-primary">Подтвердить</button>
+</form>

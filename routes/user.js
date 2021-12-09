@@ -1,5 +1,7 @@
 const express = require('express');
-const { Users, Tables } = require('../db/models');
+const {
+  Users, Tables, Interests, Themes,
+} = require('../db/models');
 
 const router = express.Router();
 
@@ -12,21 +14,34 @@ router.get('/registration', (req, res) => {
 });
 
 router.post('/registration', async (req, res) => {
-  const { login, email, password } = req.body;
   try {
-    await Users.create({ login, email, password });
-    // await Tables.create({ user_id: user.id });
-    console.log(login, email, password);
-    res.render('preferences');
-  } catch (err) { console.log(err); }
+    console.log(req.body);
+    const currentUser = await Users.findOne({ raw: true, where: { email: req.body.email } });
+    if (!currentUser) {
+      const newUser = await Users.create(req.body);
+
+      req.session.name = newUser.dataValues.login;
+
+      req.sessison.userId = newUser.dataValues.id;
+      res.sendStatus(222);
+    }
+    if (currentUser) {
+      res.json({ message: 'Вы уже зарегистрированы, попробуйте залогиниться!' });
+    }
+  } catch (err) {
+    console.log(err);
+  }
 });
 
-router.get('/preferences', (req, res) => {
-  const {
-    title, aim, smoking, drink, social,
-  } = req.body;
-  console.log(title, aim, smoking, drink, social);
-  res.render('index');
+router.get('/registration/about', async (req, res) => {
+  const interests = await Interests.findAll({ raw: true });
+  const themes = await Themes.findAll({ raw: true });
+  console.log(interests, themes);
+  res.render('about', { titleInterests: interests, titleThemes: themes });
+});
+
+router.post('/registration/about', (req, res) => {
+
 });
 
 router.get('/main', async (req, res) => {
@@ -38,4 +53,21 @@ router.get('/main', async (req, res) => {
   res.render('main', { response });
 });
 
+// карточка рандомного юзера
+// Добавить информацию из других таблиц о юзере
+router.get('/user/:id', async (req, res) => {
+  const { id } = req.params;
+  try {
+    const user = await Users.findOne({ where: { id } });
+    console.log(user);
+    res.render('userPage', { user });
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+router.get('/profile', async (req, res) => {
+  // id юзера через req.session
+  res.render('profile');
+});
 module.exports = router;
