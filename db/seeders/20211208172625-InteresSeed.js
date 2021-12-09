@@ -9,7 +9,7 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
     */
-		 await queryInterface.bulkInsert('Interests', [
+    await queryInterface.bulkInsert('Interests', [
       { title: 'qwiz', createdAt: new Date(), updatedAt: new Date() },
       { title: 'sport', createdAt: new Date(), updatedAt: new Date() },
       { title: 'movie', createdAt: new Date(), updatedAt: new Date() },
