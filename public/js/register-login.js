@@ -12,7 +12,7 @@ if (document.getElementById('register')) {
   });
 }
 
-if (document.forms) {
+if (document.forms.SANYATEMPNAME) {
   const regForm = document.forms[0];
   regForm.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -28,7 +28,15 @@ if (document.forms) {
       body: JSON.stringify(user),
     });
     const result = await res.json();
+    console.log(result);
     window.location.assign('/registration/about');
   });
 }
 
+if (document.forms[0]) {
+  const aboutForm = document.forms[0];
+  console.log(aboutForm);
+  aboutForm.addEventListener('click', (e) => {
+
+  });
+}
