@@ -38,7 +38,6 @@ if (document.forms.register) {
     }
   });
 }
-
 if (document.forms.about) {
   const aboutForm = document.forms[0];
   const nameInput = document.querySelector('#name');
@@ -76,5 +75,10 @@ if (document.forms.about) {
     if (res.status === 222) {
       window.location.assign('/main');
     }
+if (document.forms[0]) {
+  const aboutForm = document.forms[0];
+  console.log(aboutForm);
+  aboutForm.addEventListener('click', (e) => {
+
   });
 }

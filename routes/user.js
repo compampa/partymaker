@@ -38,11 +38,22 @@ router.get('/registration', (req, res) => {
 
 router.post('/registration', async (req, res) => {
   try {
+
+
+    console.log('должна отработать раз', req.body);
+
     const currentUser = await Users.findOne({ raw: true, where: { email: req.body.email } });
     if (!currentUser) {
       const newUser = await Users.create(req.body);
       req.session.name = newUser.dataValues.login;
+
       req.session.userid = newUser.dataValues.id;
+
+      console.log(newUser.dataValues.id);
+      console.log('присовоил нейм сессии ->>>>', req.session.name);
+      req.session.userid = newUser.dataValues.id;
+      console.log('айди нейм сессии ->>>>', req.session.userid);
+
       res.sendStatus(222);
     } else {
       req.session.name = currentUser.login;
@@ -59,6 +70,7 @@ router.get('/registration/about', async (req, res) => {
   const themes = await Themes.findAll({ raw: true });
   res.render('about', { titleInterests: interests, titleThemes: themes });
 });
+
 
 router.put('/registration/about', async (req, res) => {
   const {
@@ -78,5 +90,26 @@ router.put('/registration/about', async (req, res) => {
   });
   res.sendStatus(222);
 });
+
+
+router.post('/registration/about', (req, res) => {
+
+});
+
+
+
+router.get('/main', async (req, res) => {
+  const response = await Users.findAll({ raw: true });
+  console.log(response);
+  res.render('main', { response });
+});
+
+// карточка рандомного юзера
+// Добавить информацию из других таблиц о юзере
+
+router.get('/profile', async (req, res) => {
+  // id юзера через req.session
+  console.log(req.session);
+  res.render('profile');
 
 module.exports = router;
