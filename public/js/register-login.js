@@ -12,6 +12,7 @@ if (document.getElementById('register')) {
   });
 }
 
+
 if (document.forms.register) {
   const regForm = document.register;
   regForm.addEventListener('submit', async (e) => {
@@ -36,6 +37,7 @@ if (document.forms.register) {
       console.log(123);
       window.location.assign('/login');
     }
+
   });
 }
 if (document.forms.about) {

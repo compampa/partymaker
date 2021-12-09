@@ -2,6 +2,7 @@ const express = require('express');
 const process = require('process');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
+const { getNameAndId } = require('./middleware/allMiddlewares');
 
 const userRouter = require('./routes/user');
 
@@ -21,12 +22,7 @@ app.use(session({
   name: 'auth',
 }));
 
-app.use((req, res, next) => {
-  res.locals.user = req.session?.name;
-  res.locals.userId = req.session?.userid;
-  console.log('->>>>>>>>>>>>>>>>>', res.locals);
-  next();
-});
+app.use(getNameAndId);
 
 app.use('/', userRouter);
 
