@@ -31,10 +31,7 @@ router.get('/preferences', (req, res) => {
 
 router.get('/main', async (req, res) => {
   const response = await Users.findAll({ raw: true });
-  for (let i = 0; i < array.length; i++) {
-		const element = array[i];
-		
-	}
+  console.log(response);
   res.render('main', { response });
 });
 
