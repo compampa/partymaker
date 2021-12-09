@@ -126,31 +126,31 @@ router.post('/profile/:id', async (req, res) => {
 
 
 
-router.get('/main', async (req, res) => {
+// router.get('/main', async (req, res) => {
 
-  const maxcount = 20;
-  const random = Math.floor(Math.random(0, maxcount - 15));
-  const arr = '123456789012345'.split('').map((el, i) => random + i);
-  // const response = await Users.findAll({ where: { id: arr } });
-  // function getRandomInt(max) {
-  // 	return Math.floor(Math.random() * max);
-  // }
-  // console.log(response);
-  const response = [
-  	{ email: 'yra1' },
-  	{ email: 'kirill2',age: 12  },
-		{ age: 12 },
-  	{ email: 'yra3' },
-  	{ email: 'kirill4' },
-		{ age: 22 },
-  ];
-  response.sort((a, b) => Math.random() - 0.5);
+//   const maxcount = 20;
+//   const random = Math.floor(Math.random(0, maxcount - 15));
+//   const arr = '123456789012345'.split('').map((el, i) => random + i);
+//   // const response = await Users.findAll({ where: { id: arr } });
+//   // function getRandomInt(max) {
+//   // 	return Math.floor(Math.random() * max);
+//   // }
+//   // console.log(response);
+//   const response = [
+//   	{ email: 'yra1' },
+//   	{ email: 'kirill2',age: 12  },
+// 		{ age: 12 },
+//   	{ email: 'yra3' },
+//   	{ email: 'kirill4' },
+// 		{ age: 22 },
+//   ];
+//   response.sort((a, b) => Math.random() - 0.5);
 
-  const response = await Users.findAll({ raw: true });
+//   const response = await Users.findAll({ raw: true });
 
-  console.log(response);
-  res.render('main', { response });
-});
+//   console.log(response);
+//   res.render('main', { response });
+// });
 
 
 router.get('/user/:id', async (req, res) => {

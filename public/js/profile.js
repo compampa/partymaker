@@ -8,6 +8,7 @@ mainInfo.addEventListener('submit', async (e) => {
     name, login, email, age, social,
   } = document.interests;
   const temp = Object.fromEntries(new FormData(mainInfo));
+  console.log(temp);
   const response = await fetch(`/profile/${updId}`, {
     method: 'POST',
     headers: {
