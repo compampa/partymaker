@@ -45,19 +45,30 @@ router.post('/registration/about', (req, res) => {
 });
 
 router.get('/main', async (req, res) => {
-  const response = await Users.findAll({ raw: true });
-<<<<<<< HEAD
+  const maxcount = 20;
+  const random = Math.floor(Math.random(0, maxcount - 15));
+  const arr = '123456789012345'.split('').map((el, i) => random + i);
+  // const response = await Users.findAll({ where: { id: arr } });
+  // function getRandomInt(max) {
+  // 	return Math.floor(Math.random() * max);
+  // }
+  // console.log(response);
+  const response = [
+  	{ email: 'yra1' },
+  	{ email: 'kirill2' },
+  	{ email: 'yra3' },
+  	{ email: 'kirill4' },
+  	{ email: 'yra5' },
+  	{ email: 'kirill6' },
+  	{ email: 'yra' },
+  	{ email: 'kirill' },
+  	{ email: 'yra' },
+  ];
+  response.sort((a, b) => Math.random() - 0.5);
   console.log(response);
-=======
-  for (let i = 0; i < array.length; i++) {
-    const element = array[i];
-  }
->>>>>>> 498458eaf21a2b7466d608751fdec9086c9cc0fd
   res.render('main', { response });
 });
 
-// карточка рандомного юзера
-// Добавить информацию из других таблиц о юзере
 router.get('/user/:id', async (req, res) => {
   const { id } = req.params;
   try {
