@@ -55,14 +55,11 @@ router.get('/main', async (req, res) => {
   // console.log(response);
   const response = [
   	{ email: 'yra1' },
-  	{ email: 'kirill2' },
+  	{ email: 'kirill2',age: 12  },
+		{ age: 12 },
   	{ email: 'yra3' },
   	{ email: 'kirill4' },
-  	{ email: 'yra5' },
-  	{ email: 'kirill6' },
-  	{ email: 'yra' },
-  	{ email: 'kirill' },
-  	{ email: 'yra' },
+		{ age: 22 },
   ];
   response.sort((a, b) => Math.random() - 0.5);
   console.log(response);
