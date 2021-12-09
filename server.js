@@ -23,8 +23,8 @@ app.use(session({
 
 app.use((req, res, next) => {
   res.locals.user = req.session?.name;
-  res.locals.userId = req.sesion?.userId;
-  console.log(res.locals);
+  res.locals.userId = req.session?.userid;
+  console.log('->>>>>>>>>>>>>>>>>', res.locals);
   next();
 });
 
