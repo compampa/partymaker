@@ -46,9 +46,13 @@ router.post('/registration/about', (req, res) => {
 
 router.get('/main', async (req, res) => {
   const response = await Users.findAll({ raw: true });
+<<<<<<< HEAD
+  console.log(response);
+=======
   for (let i = 0; i < array.length; i++) {
     const element = array[i];
   }
+>>>>>>> 498458eaf21a2b7466d608751fdec9086c9cc0fd
   res.render('main', { response });
 });
 
