@@ -12,7 +12,6 @@ if (document.getElementById('register')) {
   });
 }
 
-
 if (document.forms.register) {
   const regForm = document.register;
   regForm.addEventListener('submit', async (e) => {
@@ -37,7 +36,6 @@ if (document.forms.register) {
       console.log(123);
       window.location.assign('/login');
     }
-
   });
 }
 if (document.forms.about) {
@@ -77,10 +75,5 @@ if (document.forms.about) {
     if (res.status === 222) {
       window.location.assign('/main');
     }
-if (document.forms[0]) {
-  const aboutForm = document.forms[0];
-  console.log(aboutForm);
-  aboutForm.addEventListener('click', (e) => {
-
   });
 }
