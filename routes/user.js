@@ -7,6 +7,8 @@ router.get('/', (req, res) => {
   res.render('index');
 });
 
+
+
 router.get('/registration', (req, res) => {
   res.render('registration');
 });
@@ -14,7 +16,7 @@ router.get('/registration', (req, res) => {
 router.post('/registration', async (req, res) => {
   const { login, email, password } = req.body;
   try {
-   await Users.create({ login, email, password });
+    await Users.create({ login, email, password });
     // await Tables.create({ user_id: user.id });
     console.log(login, email, password);
     res.render('preferences');
