@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate({ Users, Tables }) {
       // define association here
-      // this.belongsToMany(Users, { through: 'Tables', foreignKey: 'interest_id' });
+      this.belongsToMany(Users, { through: 'Tables', foreignKey: 'interest_id' });
       // this.hasMany(models.Users);
     }
   }
@@ -23,3 +23,4 @@ module.exports = (sequelize, DataTypes) => {
   });
   return Interests;
 };
+

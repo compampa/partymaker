@@ -22,6 +22,18 @@ module.exports = {
       age: {
         type: Sequelize.INTEGER,
       },
+      smoke: {
+        type: Sequelize.BOOLEAN,
+      },
+      drink: {
+        type: Sequelize.BOOLEAN,
+      },
+      social: {
+        type: Sequelize.STRING,
+      },
+      isadmin: {
+        type: Sequelize.BOOLEAN,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
