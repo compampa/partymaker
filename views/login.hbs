@@ -1,6 +1,19 @@
-
-<form name="register">
-
+{{#if message}}
+<div class="alert alert-danger" role="alert">
+  {{message}}
+</div>
+{{/if}}
+{{#if opa}}
+<div class="alert alert-danger" role="alert">
+  {{opa}}
+</div>
+{{/if}}
+{{#if wrongPassword}}
+<div class="alert alert-danger" role="alert">
+  {{wrongPassword}}
+</div>
+{{/if}}
+<form name="login" action="/login" method="post">
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Логин</label>
     <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="login">
@@ -9,9 +22,5 @@
     <label for="exampleInputPassword1" class="form-label">Пароль</label>
     <input type="password" class="form-control" id="password" name="password">
   </div>
-  <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">Email</label>
-    <input type="email" class="form-control" id="email" name="email">
-  </div>
-  <button type="submit" class="">Зарегистрироваться</button>
+  <button type="submit" class="">Залогиниться</button>
 </form>
