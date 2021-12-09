@@ -1,4 +1,3 @@
-
 const express = require('express');
 const { getNameAndId } = require('../middleware/allMiddlewares');
 const {
@@ -38,21 +37,14 @@ router.get('/registration', (req, res) => {
 });
 router.post('/registration', async (req, res) => {
   try {
-
-    console.log('должна отработать раз', req.body, res.locals);
-
     const currentUser = await Users.findOne({ raw: true, where: { email: req.body.email } });
-    console.log(currentUser);
     if (!currentUser) {
       const newUser = await Users.create(req.body);
       req.session.name = newUser.dataValues.login;
 
       req.session.userid = newUser.dataValues.id;
 
-      console.log(newUser.dataValues.id);
-      console.log('присовоил нейм сессии ->>>>', req.session.name);
       req.session.userid = newUser.dataValues.id;
-      console.log('айди нейм сессии ->>>>', req.session.userid);
 
       res.sendStatus(222);
     } else {
@@ -69,7 +61,6 @@ router.get('/registration/about', async (req, res) => {
   const themes = await Themes.findAll({ raw: true });
   res.render('about', { titleInterests: interests, titleThemes: themes });
 });
-
 
 router.put('/registration/about', async (req, res) => {
   const {
@@ -90,10 +81,8 @@ router.put('/registration/about', async (req, res) => {
   res.sendStatus(222);
 });
 
-
 router.post('/registration/about', (req, res) => {
 });
-
 
 router.get('/profile', async (req, res) => {
   const { name, userid } = req.session;
@@ -107,6 +96,7 @@ router.get('/profile', async (req, res) => {
 });
 
 router.post('/profile/:id', async (req, res) => {
+  console.log(req.body);
   const {
     name, login, email, age, social,
   } = req.body;
@@ -114,9 +104,9 @@ router.post('/profile/:id', async (req, res) => {
   const { id } = req.params;
   console.log('id=>>>>>>>>>>>>>>>>>>>>>>', id);
   console.log('req.session.id!----------->', req.session.userid);
-  if (id === req.session.userid) {
+  if (+id === req.session.userid) {
     const tempBack = await Users.update({
-      name, login: +login, email, age, social,
+      name, login, email, age: +age, social,
     }, { where: { id } });
     console.log('tempBack=====================>', tempBack);
     res.json({ respond: 'DONE' });
@@ -124,10 +114,7 @@ router.post('/profile/:id', async (req, res) => {
   res.json({ respond: 'False' });
 });
 
-
-
 router.get('/main', async (req, res) => {
-
   const maxcount = 20;
   const random = Math.floor(Math.random(0, maxcount - 15));
   const arr = '123456789012345'.split('').map((el, i) => random + i);
@@ -136,22 +123,13 @@ router.get('/main', async (req, res) => {
   // 	return Math.floor(Math.random() * max);
   // }
   // console.log(response);
-  const response = [
-  	{ email: 'yra1' },
-  	{ email: 'kirill2',age: 12  },
-		{ age: 12 },
-  	{ email: 'yra3' },
-  	{ email: 'kirill4' },
-		{ age: 22 },
-  ];
-  response.sort((a, b) => Math.random() - 0.5);
 
   const response = await Users.findAll({ raw: true });
+  response.sort((a, b) => Math.random() - 0.5);
 
   console.log(response);
   res.render('main', { response });
 });
-
 
 router.get('/user/:id', async (req, res) => {
   const { id } = req.params;
@@ -163,6 +141,5 @@ router.get('/user/:id', async (req, res) => {
     console.log(err);
   }
 });
-
 
 module.exports = router;

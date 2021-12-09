@@ -1,14 +1,13 @@
-
 <div class="block_main">
 
-	{{#each response}}
-  <div class="block_1"> 
-		<img src="/src/Снимок экрана 2021-12-08 в 12.21.19.png" class="img-thumbnail" alt="...">
-		<h6>
-			{{email}} 
-			{{age}} 
-			{{password}}
-		 </h6>
-	</div>
-	{{/each}}
+  {{#each response}}
+  <div class="block_1">
+    <img src="/src/Снимок экрана 2021-12-08 в 12.21.19.png" class="img-thumbnail" alt="...">
+    <h6>
+      {{this.email}}
+      {{this.age}}
+      {{this.password}}
+    </h6>
+  </div>
+  {{/each}}
 </div>
