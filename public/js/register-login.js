@@ -39,7 +39,7 @@ if (document.forms.register) {
   });
 }
 if (document.forms.about) {
-  const aboutForm = document.forms[0];
+  const aboutForm = document.forms.about;
   const nameInput = document.querySelector('#name');
   const ageInput = document.querySelector('#age');
   const interest = document.querySelector('#interest');

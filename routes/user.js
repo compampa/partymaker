@@ -44,8 +44,6 @@ router.post('/registration', async (req, res) => {
 
       req.session.userid = newUser.dataValues.id;
 
-      req.session.userid = newUser.dataValues.id;
-
       res.sendStatus(222);
     } else {
       req.session.name = currentUser.login;
@@ -122,7 +120,6 @@ router.get('/main', async (req, res) => {
   const response = await Users.findAll({ raw: true });
   response.sort((a, b) => Math.random() - 0.5);
 
-  console.log(response);
   res.render('main', { response });
 });
 
@@ -130,7 +127,6 @@ router.get('/user/:id', async (req, res) => {
   const { id } = req.params;
   try {
     const user = await Users.findOne({ where: { id } });
-    console.log(user);
     res.render('userPage', { user });
   } catch (err) {
     console.log(err);
