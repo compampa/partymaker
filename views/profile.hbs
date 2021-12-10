@@ -1,63 +1,65 @@
 <link rel="stylesheet" href="/css/profile.css">
+<div class="aboutDivContainer">
 
-<a href="/registration">reg</a>
-<div name="profile">
-<div name="user-avatar">
-  <img src="" alt="">
+
+  <a href="/registration">reg</a>
+  <div name="profile">
+    <div name="user-avatar">
+      <img src="" alt="">
+    </div>
+
+    <div name="props" class="props">
+      <form name="interests" id="id-{{userid}}" class="form">
+        <label class="input_label" for="name">Name:</label>
+        <input class="input_label" type="text" name="name" placeholder="name" value="{{name}}, {{userid}}">
+        <label class="input_label" for="login">Login:</label>
+        <input class="input_label" type="text" name="login" placeholder="login" value="{{login}}">
+        <label class="input_label" for="password">Password:</label>
+        <input class="input_label" type="password" name="password" placeholder="password" value="{{password}}">
+        <label class="input_label" for="email">email:</label>
+        <input class="input_label" type="text" name="email" placeholder="email" value="{{email}}">
+        <label class="input_label" for="age">Age:</label>
+        <input class="input_label" type="text" name="age" placeholder="age" value="{{age}}">
+        <label class="input_label" for="social">Link to social:</label>
+        <input class="input_label" type="text" name="social" placeholder="https://vk.com" value={{social}}>
+        <input class="input_label" type="submit" value="edit">
+      </form>
+      <form name="pref" class="pref" id="idp-{{userid}}" class="form">
+        {{#if category}}
+        <label class="input_label" for="category">
+          <select class="input_label" name="category">
+            {{#each category}}
+            <option value="{{this.title}}">{{this.title}}</option>
+            {{/each}}
+          </select>
+        </label>
+        {{/if}}
+        {{#if theme}}
+        <label class="input_label" for="theme">
+          <select class="input_label" name="theme">
+            {{#each theme}}
+            <option value="{{this.title}}">{{this.title}}</option>
+            {{/each}}
+          </select>
+        </label>
+        {{/if}}
+        <label class="checker" for="smoke"> Smoke </label>
+        <input class="checker" name="smoke" type="checkbox" value="Smoke" class="smoke">
+
+        <label class="checker" for="drink"> Drink </label>
+        <input class="checker" type="checkbox" value="Drink" class="drink">
+
+        <h5 class="card-title input_label">Хочешь добавить файл?</h5>
+
+        <div class="mb-3">
+          <label for="sampleFile" class="form-label">Выбрать</label>
+          <input type="file" class="form-control" id="sampleFile" name="sampleFile">
+        </div>
+
+        <input type="submit" value="edit">
+      </form>
+    </div>
+  </div>
 </div>
-
-<div name="props" class="props"  >
-<form name="interests" id="id-{{userid}}" class="form">
-  <label for="name">Name:</label>
-  <input type="text" name="name" placeholder="name" value="{{name}}, {{userid}}">
-  <label for="login">Login:</label>
-  <input type="text" name="login" placeholder="login" value="{{login}}">
-  <label for="password">Password:</label>
-  <input type="password" name="password" placeholder="password" value="{{password}}">
-  <label for="email">email:</label>
-  <input type="text" name="email" placeholder="email" value="{{email}}">
-  <label for="age">Age:</label>
-  <input type="text" name="age" placeholder="age" value="{{age}}">
-  <label for="social">Link to social:</label>
-  <input type="text" name="social" placeholder="https://vk.com" value={{social}}>
-  <input type="submit" value="edit">
-</form>
-<form name="pref" class="pref" id="idp-{{userid}}" class="form">
-  {{#if category}}
-  <label for="category">
-  <select name="category">
-  {{#each category}}
-    <option value="{{this.title}}">{{this.title}}</option>
-  {{/each}}
-  </select>
-  </label>
-  {{/if}}
-  {{#if theme}}
-  <label for="theme">
-    <select name="theme">
-      {{#each theme}}
-      <option value="{{this.title}}">{{this.title}}</option>
-      {{/each}}
-    </select>
-  </label>
-  {{/if}}
-  <label for="smoke"> Smoke </label>
-  <input name="smoke" type="checkbox" value="Smoke" class="smoke">
-
-<label for="drink"> Drink </label>
-  <input type="checkbox" value="Drink" class="drink">
-
-  <h5 class="card-title">Хочешь добавить файл?</h5>
-
-            <div class="mb-3">
-              <label for="sampleFile" class="form-label">Выбрать</label>
-              <input type="file" class="form-control" id="sampleFile" name="sampleFile">
-            </div>
-
-  <input type="submit" value="edit">
-</form>
-</div>
-</div>
-
 
 <script defer src="/js/profile.js"></script>

@@ -1,0 +1,14 @@
+.props {
+  padding: 10px;
+  width: 500px;
+}
+
+.input_label {
+  width: 100%;
+  padding: 5px 0;
+  margin: 5px 0;
+}
+
+.checker {
+  margin: 10px 0;
+}

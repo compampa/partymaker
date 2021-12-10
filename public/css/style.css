@@ -21,17 +21,6 @@ body{
 #check-menu{
 	display: none;
 }
-label{
-	display: block;
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	cursor: pointer;
-	z-index: 2;
-	line-height: 40px;
-}
 .burger-line{
 	position: absolute;
 	top: 8px;
@@ -98,11 +87,11 @@ font-size: 16px;
 	border-color: #127475;
 	display: inline-block;
 	margin: 100px;
-
+}
 body{
 	margin: 0;
 	padding: 0;
-	box-sizing: border-box;
+	box-sizing : border-box;
   font-family: Comfortaa, Arial, Helvetica, sans-serif;
   font-weight: normal;
 }
@@ -111,19 +100,20 @@ body{
   visibility: hidden;
 }
 body {
-  background-color: #1F2833;
-
+  background: #E5E5E5;
 }
 
 h1 {
-  color: #66FCF1;
-  display: flex;
-  justify-content: center;
-  font-size: 100px;
+  font-family: DM Sans;
+font-style: normal;
+font-weight: bold;
+font-size: 80px;
+line-height: 77px;
 }
 .btnContainer {
   display: flex;
-
+  justify-content: space-evenly;
+  margin-bottom: 100px;
 }
 
 .loginBtnDiv {
@@ -135,8 +125,141 @@ h1 {
   
 }
 .description {
-  color: #C5C6C7;
+  font-family: DM Sans;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 35px;
+  line-height: 70px;
+  color: #19191B;
+  display: flex;
+  justify-content: center;
 }
 
+.loginBtn {
+  width: 211px;
+  background-color: #FF7143;
+  border-radius: 10px;
+  height:60px;
+  border: none;
+}
+
+.registerBtn {
+  width: 211px;
+  height:60px;
+  border-radius: 10px;
+  background: #5454D4;
+  border: none;
+}
+
+.registerBtn:hover {
+  background: #0303f1;
+}
+
+.loginBtn:hover {
+  background-color: #ee4912;
+}
+
+.stateContainer {
+  margin-top: 25px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 150px;
+}
+
+.loginFormContainer {
 
 
+}
+
+.form-label {
+  font-size: 35px;
+  width: 350px;
+}
+
+.form-control {
+  width: 350px;
+  font-size: 25px;
+}
+
+.loginBtnIn {
+  margin-top: 50px;
+}
+
+.inputValue {
+  display: flex;
+  justify-content: space-between;
+  font-size: 25px;
+}
+
+.formLogin {
+  width: 450px;
+  margin: 0 auto;
+}
+
+.guest {
+  background: #E5E5E5;
+  margin-right: 75px;
+  width: 100px;
+  background: #e9593f;
+  border-radius: 10px;
+  height: 45px;
+}
+
+.mBtn {
+  margin-top: 50px;
+}
+
+.aboutDivContainer {
+  width: 500px;
+  margin: 0 auto;
+}
+
+.semiTitle {
+  margin: 8px 0;
+}
+
+.selectSome {
+  padding: 5px;
+  width: 50%;
+}
+
+.checker {
+  margin: 5px 0;
+}
+
+.aboutBtn {
+  width: 211px;
+  height:60px;
+  border-radius: 10px;
+  background: teal;
+  border: none;
+  color: white;
+  margin: 10px 0;
+}
+
+.cardContainer {
+ 
+}
+
+.imgClass {
+  width: 100%;
+  height: 100%
+}
+
+.divImg {
+  width: 350px;
+  height: 250px;
+}
+
+.containerCard {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card {
+  width: 500px;
+  height: 350px;
+
+
+  padding: 25px;
+}
