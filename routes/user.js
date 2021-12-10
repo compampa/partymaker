@@ -44,8 +44,6 @@ router.post('/registration', async (req, res) => {
 
       req.session.userid = newUser.dataValues.id;
 
-      req.session.userid = newUser.dataValues.id;
-
       res.sendStatus(222);
     } else {
       req.session.name = currentUser.login;
@@ -100,15 +98,11 @@ router.post('/profile/:id', async (req, res) => {
   const {
     name, login, email, age, social,
   } = req.body;
-  console.log('req.queryreq.queryreq.queryreq.queryreq.queryreq.query', req.query);
   const { id } = req.params;
-  console.log('id=>>>>>>>>>>>>>>>>>>>>>>', id);
-  console.log('req.session.id!----------->', req.session.userid);
   if (+id === req.session.userid) {
     const tempBack = await Users.update({
       name, login, email, age: +age, social,
     }, { where: { id } });
-    console.log('tempBack=====================>', tempBack);
     res.json({ respond: 'DONE' });
   }
   res.json({ respond: 'False' });
@@ -127,7 +121,6 @@ router.get('/main', async (req, res) => {
   const response = await Users.findAll({ raw: true });
   response.sort((a, b) => Math.random() - 0.5);
 
-  console.log(response);
   res.render('main', { response });
 });
 
@@ -135,7 +128,6 @@ router.get('/user/:id', async (req, res) => {
   const { id } = req.params;
   try {
     const user = await Users.findOne({ where: { id } });
-    console.log(user);
     res.render('userPage', { user });
   } catch (err) {
     console.log(err);
