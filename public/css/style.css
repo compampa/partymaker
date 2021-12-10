@@ -26,3 +26,37 @@ font-size: 40px;
 	display: inline-block;
 }
 
+#alert {
+  visibility: hidden;
+}
+body {
+  background-color: #1F2833;
+
+}
+
+h1 {
+  color: #66FCF1;
+  display: flex;
+  justify-content: center;
+  font-size: 100px;
+}
+.btnContainer {
+  display: flex;
+
+}
+
+.loginBtnDiv {
+  
+}
+.passwordBtnDiv {
+  
+}
+.emailBtnDiv {
+  
+}
+.description {
+  color: #C5C6C7;
+}
+
+
+

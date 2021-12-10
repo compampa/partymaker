@@ -1,38 +1,44 @@
-<h1>Дополните информацию о себе: </h1>
-<br>
-<form action="/registration/about" method="POST" name="about">
-  <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Ваше имя:</label>
-    <input type="text" class="form-control" id="name" aria-describedby="emailHelp" name="name">
-  </div>
-  <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">Ваш возраст:</label>
-    <input type="number" class="form-control" id="age" name="age">
-  </div>
-  <p>Какие у вас интересы?</p>
-  <select class="form-select form-select-sm mb-5" aria-label=".form-select-sm example" id="interest">
-    {{#each titleInterests}}
-    <option selected id={{this.id}} class="theme">{{this.title}}</option>
-    {{/each}}
-  </select>
-  <p>На какие темы любите поговорить?</p>
-  <select class="form-select form-select-sm mb-5" aria-label=".form-select-sm example" id="theme">
-    {{#each titleThemes}}
-    <option selected id={{this.id}}>{{this.title}}</option>
-    {{/each}}
-  </select>
-  <div class="form-check mt-5">
-    <input class="form-check-input" type="checkbox" value="" id="smoke">
-    <label class="form-check-label" for="flexCheckDefault">
-      Курю
-    </label>
-  </div>
-  <div class="form-check">
-    <input class="form-check-input" type="checkbox" value="" id="drink">
-    <label class="form-check-label" for="flexCheckChecked">
-      Пью
-    </label>
-  </div>
+<div class="aboutDivContainer">
+  <h1>Дополните информацию о себе: </h1>
   <br>
-  <button type="submit">Подтвердить</button>
-</form>
+  <form action="/registration/about" method="POST" name="about">
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Ваше имя:</label>
+      <input type="text" class="form-control" id="name" aria-describedby="emailHelp" name="name">
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Ваш возраст:</label>
+      <input type="number" class="form-control" id="age" name="age">
+    </div>
+    <p>Какие у вас интересы?</p>
+    <select class="form-select form-select-sm mb-5" aria-label=".form-select-sm example" id="interest">
+      {{#each titleInterests}}
+      <option selected id={{this.id}} class="theme">{{this.title}}</option>
+      {{/each}}
+    </select>
+    <p>На какие темы любите поговорить?</p>
+    <select class="form-select form-select-sm mb-5" aria-label=".form-select-sm example" id="theme">
+      {{#each titleThemes}}
+      <option selected id={{this.id}}>{{this.title}}</option>
+      {{/each}}
+    </select>
+    <div class="form-check mt-5">
+      <input class="form-check-input" type="checkbox" value="" id="smoke">
+      <label class="form-check-label" for="flexCheckDefault">
+        Курю
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" value="" id="drink">
+      <label class="form-check-label" for="flexCheckChecked">
+        Пью
+      </label>
+    </div>
+    <br>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Ссылка на соц.сеть:</label>
+      <input type="text" class="form-control" id="social" aria-describedby="emailHelp" name="social">
+    </div>
+    <button type="submit">Подтвердить</button>
+  </form>
+</div>
