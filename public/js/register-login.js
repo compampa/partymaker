@@ -16,6 +16,7 @@ if (document.forms.register) {
   const regForm = document.register;
   regForm.addEventListener('submit', async (e) => {
     e.preventDefault();
+
     const loginInput = regForm.login.value;
     const passwordInput = regForm.password.value;
     const emailInput = regForm.email.value;

@@ -42,6 +42,7 @@ router.post('/registration', async (req, res) => {
     const currentUser = await Users.findOne({ raw: true, where: { email: req.body.email } });
     if (!currentUser) {
       const newUser = await Users.create(req.body);
+      console.log(newUser);
       req.session.name = newUser.dataValues.login;
 
       req.session.userid = newUser.dataValues.id;
