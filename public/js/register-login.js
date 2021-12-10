@@ -27,13 +27,10 @@ if (document.forms.register) {
       },
       body: JSON.stringify(user),
     });
-    console.log(res);
     const result = await res.json();
     if (res.status === 222) {
-      console.log(321);
       window.location.assign('/registration/about');
     } else {
-      console.log(123);
       window.location.assign('/login');
     }
   });
@@ -46,10 +43,9 @@ if (document.forms.about) {
   const theme = document.querySelector('#theme');
   const smoke = document.querySelector('#smoke');
   const drink = document.querySelector('#drink');
-
+  const social = document.querySelector('#social');
   aboutForm.addEventListener('submit', async (e) => {
     e.preventDefault();
-
     const updateAbout = {
       name: nameInput.value,
       age: ageInput.value,
@@ -57,6 +53,7 @@ if (document.forms.about) {
       themeTitle: theme.value,
       smoke: 'false',
       drink: 'false',
+      linkSocial: social.value,
     };
     if (smoke.checked) {
       updateAbout.smoke = 'true';
