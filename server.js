@@ -19,6 +19,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.resolve(process.env.PWD, 'public')));
 app.use(express.json());
 app.use(cookieParser());
+
 app.use(cors());
 app.use(session({
   store: new FileStore(),
