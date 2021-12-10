@@ -96,19 +96,14 @@ router.get('/profile', async (req, res) => {
 });
 
 router.post('/profile/:id', async (req, res) => {
-  console.log(req.body);
   const {
     name, login, email, age, social,
   } = req.body;
-  console.log('req.queryreq.queryreq.queryreq.queryreq.queryreq.query', req.query);
   const { id } = req.params;
-  console.log('id=>>>>>>>>>>>>>>>>>>>>>>', id);
-  console.log('req.session.id!----------->', req.session.userid);
   if (+id === req.session.userid) {
-    const tempBack = await Users.update({
-      name, login, email, age: +age, social,
+    await Users.update({
+      name, login, email, age: +age, social, ...req.body, password
     }, { where: { id } });
-    console.log('tempBack=====================>', tempBack);
     res.json({ respond: 'DONE' });
   }
   res.json({ respond: 'False' });
@@ -140,6 +135,21 @@ router.get('/user/:id', async (req, res) => {
   } catch (err) {
     console.log(err);
   }
+});
+router.get('/profile/:id', async (req, res) => {
+  const { id } = req.params;
+  try {
+    const profile = await Users.findOne({ where: { id } });
+    res.render('userPage', { profile });
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+router.get('/logout', (req, res) => {
+  req.session.destroy();
+  res.clearCookie('auth');
+  res.redirect('/');
 });
 
 module.exports = router;

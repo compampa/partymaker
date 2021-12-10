@@ -73,7 +73,7 @@ if (document.forms.about) {
     });
     const result = await res.json();
     if (res.status === 222) {
-      window.location.assign('/main');
+      window.location = '/main';
     }
   });
 }

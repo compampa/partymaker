@@ -11,13 +11,17 @@ mainInfo.addEventListener('submit', async (e) => {
   // } = interests;
   const temp = Object.fromEntries(new FormData(mainInfo));
   console.log('->>>>temp', temp);
-  const response = await fetch(`/profile/${updId}`, {
-    method: 'POST',
-    headers: {
-      'Content-type': 'application/json',
-    },
-    body: JSON.stringify(temp),
-  });
-  const fetchResponse = await response.json();
-  console.log('fetchResponse ------------>>>', fetchResponse);
+  try {
+    const response = await fetch(`/profile/${updId}`, {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json',
+      },
+      body: JSON.stringify(temp),
+    });
+    const fetchResponse = await response.json();
+    console.log('fetchResponse ------------>>>', fetchResponse);
+  } catch (err) {
+    console.log(err);
+  }
 });
