@@ -115,22 +115,34 @@ router.post('/profile/:id', async (req, res) => {
   CATEGORIES
 */
 router.post('/profile/add/:id', async (req, res) => {
-  console.log(req.files.file);
+  console.log(req.files);
   const {
     smoke, drink, titleCat, titleTheme,
   } = req.body;
   const { id } = req.params;
   try {
-    if (+id === req.session.userid) {
+    if (Number(id) === req.session.userid) {
       /* UPLOADING FILES */
-      // console.log(req.files);
-      // const sampleFile = req.files.file;
-      // const fileName = sampleFile.name.split(' ').join('');
-      // const fullname = `${new Date().getTime()}_${fileName}`;
-      // const uploadPath = `${process.env.PWD}/public/uploads/`;
+      console.log(req.files);
+      const sampleFile = req.files.file;
+      const fileName = sampleFile.name.split(' ').join('');
+      const fullname = `${new Date().getTime()}_${fileName}`;
+      const uploadPath = `${process.env.PWD}/public/uploads/`;
 
+      if (!req.files || Object.keys(req.files).length === 0) {
+        return res.status(400).send('No files were uploaded.');
+      }
+
+      // The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
+      const uploadPath1 = uploadPath + fullname; // add to db
+
+      // Use the mv() method to place the file somewhere on your server
+      sampleFile.mv(uploadPath1, (err) => {
+        if (err) return res.status(500).send(err);
+      });
       /*  */
-
+      // const interest = await Interests.findOne({ where: { title: titleCat } });
+      // const theme = await Themes.findOne({ where: { title: titleTheme } });
       await Themes.update({
         title: titleTheme,
       }, { where: { id } });
@@ -140,9 +152,23 @@ router.post('/profile/add/:id', async (req, res) => {
       await Users.update({
         drink, smoke,
       }, { where: { id } });
-      res.json({ respond: 'DONE' });
+      return res.json({ respond: 'DONE' });
+      /*  */
+      // if (await Tables.findOne({ user_id: req.session.userid })) {
+      //   await Tables.update(
+      //     { interest_id: interest.dataValues.id, theme_id: theme.dataValues.id },
+      //     { where: { user_id: req.session.userid } },
+      //   );
+      // } else {
+      //   await Tables.create({
+      //     user_id: req.session.userid,
+      //     interest_id: interest.dataValues.id,
+      //     theme_id: theme.dataValues.id,
+      //   });
+      // }
+      /*  */
     }
-    res.json({ respond: 'False' });
+    return res.json({ respond: 'False' });
   } catch (err) {
     console.log(err);
   }
@@ -177,8 +203,10 @@ router.get('/user/:id', async (req, res) => {
 router.get('/profile/:id', async (req, res) => {
   const { id } = req.params;
   try {
+    const category = await Interests.findOne({ where: { id } });
+    const themes = await Themes.findOne({ where: { id } });
     const profile = await Users.findOne({ where: { id } });
-    res.render('userPage', { profile });
+    res.render('userPage', { profile, category, themes });
   } catch (err) {
     console.log(err);
   }

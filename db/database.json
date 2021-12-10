@@ -1,11 +1,11 @@
 {
   "development": {
-    "username": "warlock",
+    "username": "admin",
     "password": "123",
     "database": "partymaker",
     "host": "127.0.0.1",
     "dialect": "postgres",
-    "port": "5435"
+    "port": "5432"
   },
   "test": {
     "username": "root",

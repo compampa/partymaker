@@ -30,3 +30,51 @@
   </div>
 	{{/each}}
 </div>
+
+{{!-- <h1>Чат</h1> --}}
+{{!-- <div id="chat"> --}}
+  {{!-- {{#each messages}} --}}
+  {{!-- <div class="message"> --}}
+    {{!-- {{this.text}} --}}
+  {{!-- </div> --}}
+  {{!-- {{/each}} --}}
+{{!-- </div> --}}
+{{!-- <div class="letter"> --}}
+  {{!-- <input type="text" name="text" id="text"> --}}
+  {{!-- <button id="sendBtn">Отправить</button> --}}
+{{!-- </div> --}}
+
+
+
+    <div class="row py-5">
+      <div class="col-4">
+        <div class='card'>
+          <div class='card-header'>
+            Type something
+          </div>
+          <div class='card-body'>
+            <form name='chat' class="row justify-content-end">
+              <input name='text' type='text' id='inputMessage' class='form-control' />
+              <button type="submit" class="my-1 btn btn-outline-success">OK</button>
+            </form>
+          </div>
+        </div>
+      </div>
+ 
+      <div class="col-8">
+        <div class='card'>
+          <div class='card-header'>
+            Chat
+          </div>
+          <div id="chatik" class='card-body'>
+ 
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+
+
+
+
+<script defer src="/js/client.js"></script>
