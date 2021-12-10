@@ -27,7 +27,7 @@ module.exports = (sequelize, DataTypes) => {
     drink: DataTypes.BOOLEAN,
     social: DataTypes.STRING,
     isadmin: DataTypes.BOOLEAN,
-
+    img_path: DataTypes.STRING,
   }, {
     sequelize,
     modelName: 'Users',

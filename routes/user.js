@@ -92,21 +92,66 @@ router.get('/profile', async (req, res) => {
     name, userid, login, email, age, category, theme,
   });
 });
-
+/* MAIN USR */
 router.post('/profile/:id', async (req, res) => {
   const {
-    name, login, email, age, social,
+    name, login, email, age, social, password,
   } = req.body;
   const { id } = req.params;
-  if (+id === req.session.userid) {
-    await Users.update({
-      name, login, email, age: +age, social, ...req.body, password
-    }, { where: { id } });
-    res.json({ respond: 'DONE' });
+  console.log(id);
+  console.log(req.session.userid);
+  try {
+    if (+id === req.session.userid) {
+      await Users.update({
+        name, login, email, age: +age, social, password,
+      }, { where: { id } });
+      res.json({ respond: 'DONE' });
+    }
+    res.json({ respond: 'False' });
+  } catch (err) {
+    console.log(err);
   }
-  res.json({ respond: 'False' });
 });
 
+/*
+  THEMES
+  CATEGORIES
+*/
+router.post('/profile/add/:id', async (req, res) => {
+  console.log(req.files.file);
+  const {
+    smoke, drink, titleCat, titleTheme,
+  } = req.body;
+  const { id } = req.params;
+  try {
+    if (+id === req.session.userid) {
+      /* UPLOADING FILES */
+      // console.log(req.files);
+      // const sampleFile = req.files.file;
+      // const fileName = sampleFile.name.split(' ').join('');
+      // const fullname = `${new Date().getTime()}_${fileName}`;
+      // const uploadPath = `${process.env.PWD}/public/uploads/`;
+
+      /*  */
+
+      await Themes.update({
+        title: titleTheme,
+      }, { where: { id } });
+      await Interests.update({
+        title: titleCat,
+      }, { where: { id } });
+      await Users.update({
+        drink, smoke,
+      }, { where: { id } });
+      res.json({ respond: 'DONE' });
+    }
+    res.json({ respond: 'False' });
+  } catch (err) {
+    console.log(err);
+  }
+});
+/*
+ */
 router.get('/main', async (req, res) => {
   const maxcount = 20;
   const random = Math.floor(Math.random(0, maxcount - 15));
