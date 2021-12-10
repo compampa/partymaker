@@ -116,7 +116,7 @@ router.post('/profile/:id', async (req, res) => {
   CATEGORIES
 */
 router.post('/profile/add/:id', async (req, res) => {
-  console.log(req.files);
+  console.log('req.filesreq.filesreq.filesreq.filesreq.filesreq.files');
   const {
     smoke, drink, titleCat, titleTheme,
   } = req.body;
@@ -124,23 +124,23 @@ router.post('/profile/add/:id', async (req, res) => {
   try {
     if (Number(id) === req.session.userid) {
       /* UPLOADING FILES */
-      console.log(req.files);
-      const sampleFile = req.files.file;
-      const fileName = sampleFile.name.split(' ').join('');
-      const fullname = `${new Date().getTime()}_${fileName}`;
-      const uploadPath = `${process.env.PWD}/public/uploads/`;
+      // console.log(req.files);
+      // const sampleFile = req.files.file;
+      // const fileName = sampleFile.name.split(' ').join('');
+      // const fullname = `${new Date().getTime()}_${fileName}`;
+      // const uploadPath = `${process.env.PWD}/public/uploads/`;
 
-      if (!req.files || Object.keys(req.files).length === 0) {
-        return res.status(400).send('No files were uploaded.');
-      }
+      // if (!req.files || Object.keys(req.files).length === 0) {
+      // return res.status(400).send('No files were uploaded.');
+      // }
 
       // The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
-      const uploadPath1 = uploadPath + fullname; // add to db
+      // const uploadPath1 = uploadPath + fullname; // add to db
 
       // Use the mv() method to place the file somewhere on your server
-      sampleFile.mv(uploadPath1, (err) => {
-        if (err) return res.status(500).send(err);
-      });
+      // sampleFile.mv(uploadPath1, (err) => {
+      // if (err) return res.status(500).send(err);
+      // });
       /*  */
       // const interest = await Interests.findOne({ where: { title: titleCat } });
       // const theme = await Themes.findOne({ where: { title: titleTheme } });
