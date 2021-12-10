@@ -31,40 +31,41 @@ additionalInfo.addEventListener('submit', async (e) => {
   const updObj = {
     smoke, drink, titleCat: category, titleTheme: theme,
   };
-  const uplInput = document.querySelector('#sampleFile');
-  const files = uplInput.files[0];
+  // const uplInput = document.querySelector('#sampleFile');
+  // const files = uplInput.files[0];
 
-  const formData = new FormData();
-  formData.append('file', uplInput.files[0]);
-
+  // const formData = new FormData();
+  // formData.append('file', uplInput.files[0]);
+  console.log(updObj);
   if (smoke.checked) {
     updObj.smoke = 'true';
   } else updObj.smoke = 'false';
   if (drink.checked) {
     updObj.drink = 'true';
   } else updObj.drink = 'false';
-  // try {
-  //   const response = await fetch(`/profile/add/${updId}`, {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-type': 'application/json',
-  //     },
-  //     body: JSON.stringify(updObj),
-  //   });
-  //   await response.json();
-  // } catch (err) {
-  //   console.log(err);
-  // }
   try {
     const response = await fetch(`/profile/add/${updId}`, {
       method: 'POST',
-      body: formData,
-      files,
+      headers: {
+        'Content-type': 'application/json',
+      },
+      body: JSON.stringify(updObj),
     });
     await response.json();
   } catch (err) {
     console.log(err);
   }
+  // try {
+  //   const response = await fetch(`/profile/add/${updId}`, {
+  //     method: 'POST',
+  //     body: formData,
+  //     files,
+  //   });
+  //   await response.json();
+  // }
+  // catch (err) {
+  //   console.log(err);
+  // }
 });
 /*  */
 // uploadButton.addEventListener('click', async (event) => {
