@@ -1,22 +1,48 @@
+<a href="/registration">reg</a>
 <div name="profile">
 <div name="user-avatar">
   <img src="" alt="">
 </div>
 
-<div name="props" >
-<form style="display: flex; flex-direction: column;">
-  <input style="margin-top: 1em;" type="text" name="name">
-  <input style="margin-top: 1em;" type="text" name="login" value="login">
-  <input style="margin-top: 1em;" type="text" name="email" value="email">
-  <input style="margin-top: 1em;" type="text" name="age" value="" placeholder="age">
-  <input style="margin-top: 1em;" type="text" name="social" value="https://vk.com">
+<div name="props" class="props" >
+<form name="interests" style="display: flex; flex-direction: column;" id="id-{{userid}}" >
+  <label for="name">Name:</label>
+  <input style="margin-top: 1em;" type="text" name="name" placeholder="name" value="{{name}}, {{userid}}">
+  <label for="login">Login:</label>
+  <input style="margin-top: 1em;" type="text" name="login" placeholder="login" value="{{login}}">
+  <label for="email">email:</label>
+  <input style="margin-top: 1em;" type="text" name="email" placeholder="email" value="{{email}}">
+  <label for="age">Age:</label>
+  <input style="margin-top: 1em;" type="text" name="age" placeholder="age" value="{{age}}">
+  <label for="social">Link to social:</label>
+  <input style="margin-top: 1em;" type="text" name="social" placeholder="https://vk.com" value={{social}}>
   <input style="margin-top: 1em;" type="submit" value="edit">
 </form>
 <form name="pref" style="display: flex; flex-direction: column;">
-  <input style="margin-top: 1em;" type="text" value="category">
+  {{#if category}}
+  <label for="category">
+  <select name="category">
+  {{#each category}}
+    <option value="{{this.title}}">{{this.title}}</option>
+  {{/each}}
+  </select>
+  </label>
+  {{/if}}
+  {{#if theme}}
+  <label for="theme">
+    <select name="theme">
+      {{#each theme}}
+      <option value="{{this.title}}">{{this.title}}</option>
+      {{/each}}
+    </select>
+  </label>
+  {{/if}}
   <input style="margin-top: 1em;" type="text" value="aim">
   <input style="margin-top: 1em;" type="text" value="smthg">
   <input style="margin-top: 1em;" type="submit" value="edit">
 </form>
 </div>
 </div>
+
+
+<script defer src="/js/profile.js"></script>
