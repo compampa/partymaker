@@ -1,27 +1,55 @@
 const mainInfo = document.forms.interests;
-// const { interests } = document.forms;
+const additionalInfo = document.querySelector('.pref');
 
-mainInfo.addEventListener('submit', async (e) => {
-  e.preventDefault();
-
-  const { id } = e.target.closest('form');
-  const updId = id.slice(3);
-  // const {
-  //   name, login, email, age, social,
-  // } = interests;
-  const temp = Object.fromEntries(new FormData(mainInfo));
-  console.log('->>>>temp', temp);
-  try {
-    const response = await fetch(`/profile/${updId}`, {
-      method: 'POST',
-      headers: {
-        'Content-type': 'application/json',
-      },
-      body: JSON.stringify(temp),
-    });
-    const fetchResponse = await response.json();
-    console.log('fetchResponse ------------>>>', fetchResponse);
-  } catch (err) {
-    console.log(err);
-  }
-});
+if (mainInfo) {
+  mainInfo.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const { id } = e.target.closest('form');
+    const updId = id.slice(3);
+    const temp = Object.fromEntries(new FormData(mainInfo));
+    try {
+      const response = await fetch(`/profile/${updId}`, {
+        method: 'POST',
+        headers: {
+          'Content-type': 'application/json',
+        },
+        body: JSON.stringify(temp),
+      });
+      await response.json();
+    } catch (err) {
+      console.log(err);
+    }
+  });
+}
+if (additionalInfo) {
+  additionalInfo.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const { id } = e.target.closest('form');
+    const updId = id.slice(4);
+    const category = additionalInfo.category.value;
+    const theme = additionalInfo.theme.value;
+    const smoke = document.querySelector('.smoke');
+    const drink = document.querySelector('.drink');
+    const updObj = {
+      smoke, drink, titleCat: category, titleTheme: theme,
+    };
+    if (smoke.checked) {
+      updObj.smoke = 'true';
+    } else updObj.smoke = 'false';
+    if (drink.checked) {
+      updObj.drink = 'true';
+    } else updObj.drink = 'false';
+    try {
+      const response = await fetch(`/profile/add/${updId}`, {
+        method: 'POST',
+        headers: {
+          'Content-type': 'application/json',
+        },
+        body: JSON.stringify(updObj),
+      });
+      await response.json();
+    } catch (err) {
+      console.log(err);
+    }
+  });
+}

@@ -34,6 +34,9 @@ module.exports = {
       isadmin: {
         type: Sequelize.BOOLEAN,
       },
+      img_path: {
+        type: Sequelize.STRING,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
