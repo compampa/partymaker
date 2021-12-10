@@ -1,15 +1,32 @@
-<div class="block_main">
 
+<div class="block_main">
   {{#each response}}
   
-  <div class="block_1">
-    <img src="/src/Снимок экрана 2021-12-08 в 12.21.19.png" class="img-thumbnail" alt="...">
+  <!-- <div class="block_1">
+    <img width="200px" src="/src/Снимок экрана 2021-12-08 в 12.21.19.png" class="img-thumbnail" alt="...">
     <h6>
       <a href="/profile/{{this.id}}">{{this.login}}</a>
       {{this.email}}
       {{this.age}}
       {{this.password}}
     </h6>
-  </div>
+  </div> -->
   {{/each}}
+</div>
+
+<div class="card" style="max-width: 340px; background-color: #F5DFBB; width: 250px; height: 150px;">
+	{{#each response}}
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img src="/src/Снимок экрана 2021-12-08 в 12.21.19.png" class="img-fluid rounded-start" alt="...">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">{{this.name}}</h5>
+        <p class="card-text">{{this.age}}</p>
+        <p class="card-text">{{this.social}}</p>
+      </div>
+    </div>
+  </div>
+	{{/each}}
 </div>
